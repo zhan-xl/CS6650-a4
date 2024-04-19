@@ -148,10 +148,10 @@ public class SkierServlet extends HttpServlet {
           long cacheExpiration = (long) cacheData.get("cacheExpiration");
 
           if (currentTime - timestamp <= cacheExpiration) {
+            JsonObject responseJson = new JsonObject();
+            responseJson.addProperty("total vertical", vertical);
+            response.getWriter().write(responseJson.toString());
             response.setStatus(HttpServletResponse.SC_OK);
-            Gson gson = new Gson();
-            String jsonValue = gson.toJson(vertical);
-            response.getWriter().write(jsonValue);
             return;
           }
         }

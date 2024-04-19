@@ -116,9 +116,7 @@ public class ResortServlet extends HttpServlet {
     HashSet<Integer> skiers = new HashSet<>();
     while (cursor.hasNext()) {
       Integer skierID = cursor.next().getInteger("skierID");
-      if (!skiers.contains(skierID)) {
-        skiers.add(cursor.next().getInteger("skierID"));
-      }
+      skiers.add(skierID);
     }
 
     int numberOfSkiers = skiers.size();
